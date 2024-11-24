@@ -1,0 +1,42 @@
+.nav {
+  position: sticky;
+  top: 0;
+  margin: 77px 0 31px 107px;
+  background-color: #1E1E1E;
+  z-index: 1;
+}
+.nav ul {
+  display: flex;
+  align-items: center;
+}
+.nav ul li + li {
+  margin-left: 12px;
+}
+.nav ul li .btn {
+  background-color: #282828;
+  border-radius: 4px;
+  color: #639eff;
+}
+.nav ul li .html-text {
+  background: none;
+  margin-left: 19px;
+}
+.container {
+  max-width: 800px;
+  margin: 60px 107px 107px;
+  overflow: hidden;
+}
+.container p {
+  max-width: 621px;
+  line-height: 23px;
+  margin-top: 31px;
+}
+.container h3 {
+  margin: 46px 0 33px 0;
+  font-size: 31px;
+}
+.container img {
+  display: block;
+  max-width: 739px;
+  max-height: 739px;
+}
