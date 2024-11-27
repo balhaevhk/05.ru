@@ -23,6 +23,7 @@ function saveState() {
     redoStack = []; 
 }
 
+// Создать заголовок
 
 makeHeaders.addEventListener('click', function () {
     saveState();
@@ -64,7 +65,7 @@ makeHeaders.addEventListener('click', function () {
     }
 });
 
-
+// Создать абзац
 
 makeParagraph.addEventListener('click', function () {
     saveState();
@@ -138,11 +139,23 @@ makeParagraph.addEventListener('click', function () {
 
 
 
-// image
+// Добавить изображение
 
 insertImage.addEventListener('click', function() {
     saveState();
     const selection = window.getSelection();
+    
+    if (!selection || !selection.rangeCount) {
+        alert("Необходимо выбрать место для вставки изображения");
+        return;
+    }
+
+    const range = selection.getRangeAt(0);
+    if (!editor.contains(range.commonAncestorContainer)) {
+        alert("Курсор должен находиться внутри редактора");
+        return;
+    }
+
     const imageUrl = prompt('Введите URL изображения:');
 
     if (!imageUrl || !isValidUrl(imageUrl)) {
@@ -155,22 +168,13 @@ insertImage.addEventListener('click', function() {
     img.alt = 'Вставленное изображение'; 
     img.width = 300; 
 
-    if (selection.rangeCount) {
-        const range = selection.getRangeAt(0);
-        range.deleteContents(); 
-        range.insertNode(img); 
-        selection.removeAllRanges();
-    } else {
-        document.body.appendChild(img);
-    }
+
+    range.deleteContents(); 
+    range.insertNode(img); 
+    selection.removeAllRanges();
 });
 
-
-
-
-
-// copy HTML
-
+// Скопировать HTML
 
 copyHtml.addEventListener('click', function() {
 
